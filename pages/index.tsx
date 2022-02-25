@@ -1,5 +1,4 @@
-import { Textarea } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
+import { Image, Input, Textarea, Button } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -19,23 +18,6 @@ const Home: NextPage = () => {
         <p className={styles.description}>
           Paste your wordle response inside the text box below.
         </p>
-
-        <div className={styles.card}>
-          <Input
-            placeholder="Basic usage"
-            size="lg"
-            className={styles.inputWord}
-            maxLength={5}
-            minLength={5}
-          />
-          <Textarea
-            placeholder="WORDLE result"
-            size="lg"
-            className={styles.inputBoxes}
-            resize="none"
-            height="200px"
-          />
-        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -44,6 +26,11 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <Image
+            src="https://avatars.githubusercontent.com/u/42910903?v=4"
+            alt="Carlos Gabriel"
+            className={styles.avatar}
+          />
           Made by @carlossgabriel
         </a>
       </footer>
