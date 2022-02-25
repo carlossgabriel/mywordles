@@ -15,7 +15,7 @@
 .footer {
   display: flex;
   flex: 1;
-  padding: 2rem 0;
+  padding: 1rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: #538d4e;
   text-decoration: none;
 }
 
@@ -82,14 +82,14 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 450px;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #538d4e;
+  border-color: #538d4e;
 }
 
 .card h2 {
@@ -106,6 +106,10 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.inputWord {
+  margin-bottom: 16px;
 }
 
 @media (max-width: 600px) {
