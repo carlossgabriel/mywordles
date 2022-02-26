@@ -6,7 +6,7 @@ export default function InputCard() {
   return (
     <div className={styles.card}>
       <Input
-        placeholder="Type here your wordle from today"
+        placeholder="Today wordle"
         size="lg"
         className={styles.inputWord}
         maxLength={5}
@@ -15,7 +15,6 @@ export default function InputCard() {
       <Textarea
         placeholder="WORDLE result"
         size="lg"
-        className={styles.inputBoxes}
         resize="none"
         height="200px"
       />

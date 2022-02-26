@@ -1,12 +1,49 @@
 import { Image } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper";
-import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
 
+import Card from "../components/Card";
 import InputCard from "../components/InputCard";
 import styles from "../styles/Home.module.css";
+
+const cards = [
+  {
+    word: "teste",
+    statistics: ` 1 
+    Wordle 252 3/6*
+    `,
+  },
+  {
+    word: "teste",
+    statistics: ` 2 
+    Wordle 252 3/6*
+    `,
+  },
+  {
+    word: "teste",
+    statistics: ` 3 
+    Wordle 252 3/6*
+    `,
+  },
+  {
+    word: "teste",
+    statistics: ` 4 
+    Wordle 252 3/6*
+    `,
+  },
+  {
+    word: "teste",
+    statistics: ` 5 
+    Wordle 252 3/6*
+    `,
+  },
+  {
+    word: "teste",
+    statistics: ` 6 
+    Wordle 252 3/6*
+    `,
+  },
+];
 
 const Home: NextPage = () => {
   return (
@@ -24,30 +61,12 @@ const Home: NextPage = () => {
           Paste your wordle response inside the text box below.
         </p>
 
-        <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={16}
-          slidesPerView={3}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          className={styles.swiper}
-        >
-          <SwiperSlide>
-            <InputCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <InputCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <InputCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <InputCard />
-          </SwiperSlide>
-        </Swiper>
+        <div className={styles.carousel}>
+          <InputCard />
+          {cards.map((card, index) => {
+            return <Card key={index} {...card} />;
+          })}
+        </div>
       </main>
 
       <footer className={styles.footer}>
