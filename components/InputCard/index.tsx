@@ -1,7 +1,8 @@
 import { Button, Input, Textarea } from "@chakra-ui/react";
+
 import styles from "../../styles/Home.module.css";
 
-function InputCard() {
+export default function InputCard() {
   return (
     <div className={styles.card}>
       <Input
@@ -24,5 +25,3 @@ function InputCard() {
     </div>
   );
 }
-
-export { InputCard };
