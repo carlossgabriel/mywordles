@@ -60,14 +60,13 @@ const Home: NextPage = () => {
         <p className={styles.description}>
           Paste your wordle response inside the text box below.
         </p>
-
-        <div className={styles.carousel}>
-          <InputCard />
-          {cards.map((card, index) => {
-            return <Card key={index} {...card} />;
-          })}
-        </div>
       </main>
+      <div className={styles.carousel}>
+        <InputCard />
+        {cards.map((card, index) => {
+          return <Card key={index} {...card} />;
+        })}
+      </div>
 
       <footer className={styles.footer}>
         <a
