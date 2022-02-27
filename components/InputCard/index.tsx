@@ -19,7 +19,7 @@ export default function InputCard() {
         height="200px"
       />
       <Button colorScheme="teal" variant="outline" className={styles.button}>
-        Button
+        Save
       </Button>
     </div>
   );

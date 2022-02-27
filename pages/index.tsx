@@ -1,4 +1,5 @@
-import { Image } from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Image, IconButton } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -45,6 +46,15 @@ const cards = [
   },
 ];
 
+const scroll = (direction: "left" | "right") => {
+  const card = document.querySelector(`.${styles.carousel}`);
+  if (direction === "left") {
+    card?.scrollBy({ left: -300, top: 0, behavior: "smooth" });
+  } else {
+    card?.scrollBy({ left: 300, top: 0, behavior: "smooth" });
+  }
+};
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -57,15 +67,33 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>My Wordles</h1>
 
-        <p className={styles.description}>
-          Paste your wordle response inside the text box below.
-        </p>
+        <div className={styles.scrollButtons}>
+          <IconButton
+            aria-label="Scroll to the left"
+            icon={<ChevronLeftIcon />}
+            onClick={() => {
+              scroll("left");
+            }}
+          />
+          <p className={styles.description}>
+            Paste your wordle response inside the input card below and hit save.
+          </p>
+          <IconButton
+            aria-label="Scroll to the right"
+            icon={<ChevronRightIcon />}
+            onClick={() => {
+              scroll("right");
+            }}
+          />
+        </div>
 
         <div className={styles.carousel}>
           <InputCard />
-          {cards.map((card, index) => {
-            return <Card key={index} {...card} />;
-          })}
+          {cards.length > 0
+            ? cards.map((card, index) => {
+                return <Card key={index} {...card} />;
+              })
+            : null}
         </div>
       </main>
 
