@@ -5,8 +5,6 @@ As most people know by now, the game [Wordle](https://www.nytimes.com/games/word
 
 Inspired by the game, I created a web app that allows you to save your wordle for the day and keep track of your progress.
 
-<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2884_RC01/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"wordle","geo":"","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=wordle&date=today 12-m","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
-
 It's currently under development, but you can see a screenshot of the app on it's current state.
 
 ![first stage](./first_stage.png)
