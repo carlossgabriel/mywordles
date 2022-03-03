@@ -44,16 +44,16 @@ const cards = [
   },
 ];
 
-const scroll = (direction: "left" | "right") => {
-  const card = document.querySelector(`.${styles.carousel}`);
-  if (direction === "left") {
-    card?.scrollBy({ left: -300, top: 0, behavior: "smooth" });
-  } else {
-    card?.scrollBy({ left: 300, top: 0, behavior: "smooth" });
-  }
-};
-
 export default function Carousel() {
+  const scroll = (direction: "left" | "right") => {
+    const card = document.querySelector(`.${styles.carousel}`);
+    if (direction === "left") {
+      card?.scrollBy({ left: -300, top: 0, behavior: "smooth" });
+    } else {
+      card?.scrollBy({ left: 300, top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div className={styles.scrollButtons}>
