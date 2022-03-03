@@ -10,7 +10,7 @@ export default function InputCard() {
   const handleClick = async () => {
     try {
       console.log(title, description);
-      await fetch("/api/word/post", {
+      await fetch("/api/word/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
