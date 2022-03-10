@@ -1,6 +1,9 @@
-import { Image } from "@chakra-ui/react";
+import { Icon, Image } from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Router from "next/router";
+import { BiUserCircle } from "react-icons/bi";
 
 import Carousel from "../components/Carousel";
 import styles from "../styles/Home.module.css";
@@ -15,6 +18,13 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <IconButton
+          aria-label="User"
+          icon={<BiUserCircle />}
+          onClick={() => {
+            Router.push("/user");
+          }}
+        />
         <h1 className={styles.title}>My Wordles</h1>
 
         <p className={styles.description}>
