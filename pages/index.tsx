@@ -1,5 +1,5 @@
-import { Icon, Image } from "@chakra-ui/react";
-import { IconButton } from "@chakra-ui/react";
+import { IconButton, Image } from "@chakra-ui/react";
+import { PrismaClient } from "@prisma/client";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Router from "next/router";
@@ -8,7 +8,9 @@ import { BiUserCircle } from "react-icons/bi";
 import Carousel from "../components/Carousel";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+const prisma = new PrismaClient();
+
+function Home({ cards }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,20 +20,13 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <IconButton
-          aria-label="User"
-          icon={<BiUserCircle />}
-          onClick={() => {
-            Router.push("/user");
-          }}
-        />
         <h1 className={styles.title}>My Wordles</h1>
 
         <p className={styles.description}>
           Paste your wordle response inside the input card below and hit save.
         </p>
 
-        <Carousel />
+        <Carousel cards={cards} />
       </main>
 
       <footer className={styles.footer}>
@@ -50,6 +45,13 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
-};
+}
+
+export async function getServerSideProps() {
+  const data = await prisma.word.findMany();
+  console.log("data", data);
+
+  return { props: { ...data } };
+}
 
 export default Home;
