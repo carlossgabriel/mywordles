@@ -4,10 +4,26 @@ import { useState } from "react";
 import styles from "../../styles/Home.module.css";
 
 export default function InputCard() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [word, setWord] = useState("");
+  const [statistics, setStatistics] = useState("");
 
-  const handleClick = async () => {};
+  const handleClick = async () => {
+    try {
+      const data = await fetch("api/cards/", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          word,
+          statistics,
+        }),
+      });
+      console.log(data);
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -17,7 +33,7 @@ export default function InputCard() {
         className={styles.inputWord}
         maxLength={5}
         minLength={5}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => setWord(e.target.value)}
       />
       <Textarea
         placeholder="WORDLE result"
@@ -25,7 +41,7 @@ export default function InputCard() {
         resize="none"
         height="200px"
         maxLength={70}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => setStatistics(e.target.value)}
       />
       <Button
         colorScheme="teal"

@@ -1,18 +1,16 @@
 // Import required AWS SDK clients and commands for Node.js.
-import { ListBucketsCommand } from "@aws-sdk/client-s3";
 import { Image } from "@chakra-ui/react";
 import Head from "next/head";
 
 import Carousel from "../components/Carousel";
-import { s3Client } from "../lib/awsClient.js";
 import styles from "../styles/Home.module.css";
 
-// Set the parameters
-const params = {
-  Bucket: "simplewordbucket", // The name of the bucket. For example, 'sample_bucket_101'.
-  Key: "", // The name of the object. For example, 'sample_upload.txt'.
-  Body: "", // The content of the object. For example, 'Hello world!".
-};
+const cards = [
+  {
+    word: "string",
+    statistics: "string",
+  },
+];
 
 function Home({ cards }) {
   return (
@@ -49,23 +47,6 @@ function Home({ cards }) {
       </footer>
     </div>
   );
-}
-
-const run = async () => {
-  try {
-    const data = await s3Client.send(new ListBucketsCommand({}));
-    console.log("Success", data.Buckets);
-    return data; // For unit tests.
-  } catch (err) {
-    console.log("Error", err);
-  }
-};
-
-export async function getServerSideProps() {
-  const result = await run();
-  console.log("result", result);
-
-  return { props: { ...data } };
 }
 
 export default Home;
