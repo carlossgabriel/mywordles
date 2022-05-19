@@ -1,4 +1,4 @@
-import { PutCommand } from "@aws-sdk/lib-dynamodb";
+import { BatchGetCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { ddbDocClient } from "../../../lib/ddbClient.js";
@@ -15,6 +15,7 @@ export default async function handler(
       Item: {
         word,
         statistics,
+        date: new Date(),
       },
     };
 
@@ -28,6 +29,16 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
+    const params = {
+      RequestItems: {
+        TableName: process.env.TABLE_NAME,
+      },
+    };
+
+    try {
+      const data = await ddbDocClient.send(new BatchGetCommand(params));
+    } catch (e) {}
+
     res.status(200).json({
       data: {
         word: "teste",
