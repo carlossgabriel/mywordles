@@ -1,4 +1,8 @@
-import { BatchGetCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
+import {
+  BatchGetCommand,
+  PutCommand,
+  ScanCommand,
+} from "@aws-sdk/lib-dynamodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { ddbDocClient } from "../../../lib/ddbClient.js";
@@ -15,7 +19,7 @@ export default async function handler(
       Item: {
         word,
         statistics,
-        date: new Date(),
+        date: new Date().toLocaleDateString("en-US"),
       },
     };
 
@@ -29,21 +33,19 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
+    let data;
     const params = {
-      RequestItems: {
-        TableName: process.env.TABLE_NAME,
-      },
+      TableName: process.env.TABLE_NAME,
     };
 
     try {
-      const data = await ddbDocClient.send(new BatchGetCommand(params));
-    } catch (e) {}
+      data = await ddbDocClient.send(new ScanCommand(params));
+    } catch (e) {
+      console.log("Failed to get itens from DynamoDB", e);
+    }
 
     res.status(200).json({
-      data: {
-        word: "teste",
-        statistics: "statistics",
-      },
+      data,
     });
   }
 }

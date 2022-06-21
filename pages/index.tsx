@@ -5,14 +5,7 @@ import Head from "next/head";
 import Carousel from "../components/Carousel";
 import styles from "../styles/Home.module.css";
 
-const cards = [
-  {
-    word: "string",
-    statistics: "string",
-  },
-];
-
-function Home({ cards }) {
+function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -28,7 +21,7 @@ function Home({ cards }) {
           Paste your wordle response inside the input card below and hit save.
         </p>
 
-        <Carousel cards={cards} />
+        <Carousel />
       </main>
 
       <footer className={styles.footer}>
